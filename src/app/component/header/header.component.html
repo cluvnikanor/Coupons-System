@@ -1,0 +1,19 @@
+{{currentDate|date:'d MMMM yyyy'}}
+
+<button type="button" class="btn btn-default">
+  <ng-container *ngIf="this.logServiceService.isLoged; else elseTemplate">
+  <a [routerLink]="['/logout']"  routerLinkActive="router-link-active" >Logout</a>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <a [routerLink]="['/login']"  routerLinkActive="router-link-active" >Login</a>
+  </ng-template>
+   </button>
+
+<button type="button" class="btn btn-default">    
+  <a [routerLink]="['/middle']"  routerLinkActive="router-link-active" >Middle</a>
+</button>
+
+<button type="button" class="btn btn-default">
+  <a [routerLink]="['/left']"  routerLinkActive="router-link-active" >Left</a>
+</button>
+

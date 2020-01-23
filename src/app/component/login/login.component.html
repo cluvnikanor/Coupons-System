@@ -1,0 +1,49 @@
+<form class="form-horizontal">
+    <fieldset>
+    
+    <!-- Form Name -->
+    <legend>Login</legend>
+    
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="textinput">Email</label>  
+      <div class="col-md-4">
+      <input id="textinput" name="textinput" type="text" placeholder="Enter email" class="form-control input-md">
+      </div>
+    </div>
+    
+    <!-- Password input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="passwordinput">Password</label>
+      <div class="col-md-4">
+        <input id="passwordinput" name="passwordinput" type="password" placeholder="Enter password" class="form-control input-md">
+      </div>
+    </div>
+    
+    <!-- Select Basic -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="selectbasic">Select Basic</label>
+      <div class="col-md-4">
+        <select id="selectbasic" name="selectbasic" class="form-control">
+          <option select disabled value="0">Select type</option>
+          <option value="1">Customer</option>
+          <option value="2">Company</option>
+          <option value="3">Administrator</option>
+
+        </select>
+      </div>
+    </div>
+    
+    <!-- Button -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="singlebutton">Single Button</label>
+      <div class="col-md-4">
+        <button id="singlebutton" name="singlebutton" class="btn btn-primary" 
+        (click)="this.logServiceService.loginButtonClicked()">
+          <a [routerLink]="['/home']"  routerLinkActive="router-link-active" >Login</a>
+        </button>
+      </div>
+    </div>
+    isLoged={{this.logServiceService.isLoged}}
+    </fieldset>
+    </form>
