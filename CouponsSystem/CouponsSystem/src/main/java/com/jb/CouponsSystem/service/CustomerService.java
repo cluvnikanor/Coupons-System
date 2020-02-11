@@ -8,7 +8,7 @@ import com.jb.CouponsSystem.repo.CustomerRepository;
 
 @Service
 public class CustomerService {
-	
+
 	@Autowired
 	private CustomerRepository customerRepository;
 
@@ -26,11 +26,14 @@ public class CustomerService {
 
 	public ArrayList<Customer> getAllCustomers() {
 		return (ArrayList<Customer>) customerRepository.findAll();
-
 	}
 
-	public Customer getOneCustomer(long CustomerId) {
-		return customerRepository.getOne((long) CustomerId);
+	public Customer getOneCustomer(long customerId) {
+		return customerRepository.getOne((long) customerId);
 	}
-
+	
+	public ArrayList<Customer> getCustomerByEmailAndPassword(String email, String password) {
+		return (ArrayList<Customer>) customerRepository.findByEmailAndPassword(email, password);
+	}
+	
 }

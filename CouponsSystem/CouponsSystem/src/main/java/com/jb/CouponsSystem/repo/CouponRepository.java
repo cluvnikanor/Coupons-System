@@ -25,7 +25,7 @@ public interface CouponRepository extends JpaRepository<Coupon, Long> {
 	
 	@Transactional
 	@Modifying
-	@Query("UPDATE Coupon c SET c.amount = ?2 WHERE c.id = ?1")
+	@Query("UPDATE Coupon c SET c.amount = :couponAmount WHERE c.id = :couponId")
 	void setAmountById(Long couponId, Integer couponAmount);//works
 
 	@Query("SELECT c.amount FROM Coupon c WHERE c.id = :couponId")
@@ -33,4 +33,5 @@ public interface CouponRepository extends JpaRepository<Coupon, Long> {
 	
 	@Query("SELECT c.endDate FROM Coupon c WHERE c.id = :couponId")
 	Date findEndDateById(long couponId);//works. Surround by try/catch
+
 }

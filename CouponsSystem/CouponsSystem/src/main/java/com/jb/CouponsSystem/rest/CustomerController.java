@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jb.CouponsSystem.beans.Customer;
+import com.jb.CouponsSystem.logic.CouponPurchase;
+import com.jb.CouponsSystem.logic.CustomerLogin;
 import com.jb.CouponsSystem.service.CustomerService;
 
 @RestController
@@ -23,6 +25,12 @@ public class CustomerController {
 	@Autowired
 	CustomerService service;
 
+	@Autowired
+	CouponPurchase couponPurchase;
+
+	@Autowired
+	CustomerLogin customerLogin;
+	
 	@PostMapping("/add")
 	public ResponseEntity<Long> add(@RequestBody Customer customer) {
 		service.addCustomer(customer);
@@ -48,6 +56,24 @@ public class CustomerController {
 	@GetMapping("/getAll")
 	public ResponseEntity<ArrayList<Customer>> getAllCustomers() {
 		return new ResponseEntity<ArrayList<Customer>>(service.getAllCustomers(), HttpStatus.OK);
+	}
+
+	@PostMapping("/couponPurchase")
+	public String couponPurchase(@RequestParam(name = "couponId") long couponId,
+			@RequestParam(name = "customerId") long customerId) {
+		String message = "OK";
+		try {
+			couponPurchase.Purchase(couponId, customerId);
+		} catch (Exception e) {
+			message = e.getMessage();
+		}
+		return message;
+	}
+
+	@GetMapping("/login")
+	public ResponseEntity<Customer> login(@RequestParam(name = "email") String email,
+			@RequestParam(name = "password") String password) {
+		return new ResponseEntity<Customer>(customerLogin.login(email, password), HttpStatus.OK);
 	}
 
 }
