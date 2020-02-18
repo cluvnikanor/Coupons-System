@@ -16,30 +16,30 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Coupons")
 public class Coupon {
-	private int id;
-	private int CompanyId;
-	private int CategoryId;
+	private long id;
+	private long companyId;
+	private long categoryId;
 	private String title;
 	private String description;
 	private Date startDate;
-	private Date endDateDate;
+	private Date endDate;
 	private int amount;
-	private double price;
+	private Double price;
 	private String image;
 	private List<Customer> customers = new ArrayList<Customer>();
 
 	public Coupon() {
 	}
 
-	public Coupon(int id, int companyId, int categoryId, String title, String description, Date startDate,
-			Date endDateDate, int amount, double price, String image, List<Customer> customers) {
+	public Coupon(long id, long companyId, long categoryId, String title, String description, Date startDate,
+			Date endDate, int amount, Double price, String image, List<Customer> customers) {
 		this.id = id;
-		CompanyId = companyId;
-		CategoryId = categoryId;
+		this.companyId = companyId;
+		this.categoryId = categoryId;
 		this.title = title;
 		this.description = description;
 		this.startDate = startDate;
-		this.endDateDate = endDateDate;
+		this.endDate = endDate;
 		this.amount = amount;
 		this.price = price;
 		this.image = image;
@@ -48,30 +48,30 @@ public class Coupon {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
 	@Column
-	public int getCompanyId() {
-		return CompanyId;
+	public long getCompanyId() {
+		return companyId;
 	}
 
-	public void setCompanyId(int companyId) {
-		CompanyId = companyId;
+	public void setCompanyId(long companyId) {
+		this.companyId = companyId;
 	}
 
 	@Column
-	public int getCategoryId() {
-		return CategoryId;
+	public long getCategoryId() {
+		return categoryId;
 	}
 
-	public void setCategoryId(int categoryId) {
-		CategoryId = categoryId;
+	public void setCategoryId(long categoryId) {
+		this.categoryId = categoryId;
 	}
 
 	@Column
@@ -102,12 +102,12 @@ public class Coupon {
 	}
 
 	@Column
-	public Date getEndDateDate() {
-		return endDateDate;
+	public Date getEndDate() {
+		return endDate;
 	}
 
-	public void setEndDateDate(Date endDateDate) {
-		this.endDateDate = endDateDate;
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
 	}
 
 	@Column
@@ -120,11 +120,11 @@ public class Coupon {
 	}
 
 	@Column
-	public double getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 
@@ -148,9 +148,11 @@ public class Coupon {
 
 	@Override
 	public String toString() {
-		return "Coupon [id=" + id + ", CompanyId=" + CompanyId + ", CategoryId=" + CategoryId + ", title=" + title
-				+ ", description=" + description + ", startDate=" + startDate + ", endDateDate=" + endDateDate
-				+ ", amount=" + amount + ", price=" + price + ", image=" + image + "]";
+		return "Coupon [id=" + id + ", companyId=" + companyId + ", categoryId=" + categoryId + ", title=" + title
+				+ ", description=" + description + ", startDate=" + startDate + ", endDate=" + endDate + ", amount="
+				+ amount + ", price=" + price + ", image=" + image + ", customers=" + customers + "]";
 	}
+
+
 
 }

@@ -10,7 +10,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Categories")
 public class Category {
-	private int id;
+	private long id;
 	private String name;
 
 	public Category() {
@@ -23,11 +23,11 @@ public class Category {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

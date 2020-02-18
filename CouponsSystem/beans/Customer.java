@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @Table(name = "Customers")
 public class Customer {
 
-	private int id;
+	private long id;
 	private String firstName;
 	private String lastName;
 	private String email;
@@ -20,7 +20,7 @@ public class Customer {
 	public Customer() {
 	}
 
-	public Customer(int id, String firstName, String lastName, String email, String password) {
+	public Customer(long id, String firstName, String lastName, String email, String password) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -30,11 +30,11 @@ public class Customer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -76,7 +76,7 @@ public class Customer {
 
 	@Override
 	public String toString() {
-		return "Customers [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+		return "\nCustomers [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
 				+ ", password=" + password + "]";
 	}
 

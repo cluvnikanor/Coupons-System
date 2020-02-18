@@ -28,7 +28,18 @@ public class CompanyController {
 		service.addCompany(company);
 		return new ResponseEntity<Long>(company.getId(), HttpStatus.OK);
 	}
-	
+
+	@PostMapping("/update")
+	public ResponseEntity<Long> update(@RequestBody Company company) {
+		service.updateCompany(company);
+		return new ResponseEntity<Long>(company.getId(), HttpStatus.OK);
+	}
+
+	@PostMapping("/delete")
+	public void delete(@RequestParam(name = "id") long id) {
+		service.deleteCompany(id);
+	}
+
 	@GetMapping("/get")
 	public ResponseEntity<Company> getEmployee(@RequestParam(name = "id") long id) {
 		return new ResponseEntity<Company>(service.getOneCompany(id), HttpStatus.OK);
