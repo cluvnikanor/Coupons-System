@@ -1,1 +1,24 @@
 <p>view-company-details works!</p>
+
+<form class="form-inline">
+    <legend>View company details</legend>
+
+<ng-container *ngIf="company.id">
+    <table class="table table-hover">
+        <tbody>
+            <tr>
+                <th scope="row">Name</th>
+                <td>{{this.company.name}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Email</th>
+                <td>{{this.company.email}}</td>
+
+            </tr>
+            <tr>
+                <th scope="row">Password</th>
+                <td>{{this.company.password}}</td>
+            </tr>
+        </tbody>
+    </table>
+</ng-container>

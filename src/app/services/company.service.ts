@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Coupon } from 'src/models/coupon';
 import { UserMessage } from 'src/models/user-message';
-import { UserMessageAndCoupon } from 'src/models/user-message-and-coupon';
+import { UserMessageAndCompany } from 'src/models/user-message-and-company';
 import { UserMessageAndCoupons } from 'src/models/user-message-and-coupons';
 import { ShareDataService } from './share-data.service';
 
@@ -13,7 +13,7 @@ import { ShareDataService } from './share-data.service';
 export class CompanyService {
   private baseUrl = "http://localhost:8080/company/"
   public showApp: boolean[] = [false, false, false, false, false, false, false, false, false, false, false];
-  public message: string ="";
+  public message: string = "";
   public id: number;
   public coupon: Coupon = new Coupon;
 
@@ -32,6 +32,12 @@ export class CompanyService {
       coupon);
   }
 
+  public updateCoupon(coupon: Coupon): Observable<UserMessage> {
+    return this.http.put<UserMessage>(this.baseUrl +
+      "updateCoupon?t=" + this.shareDataService.userResponse.token,
+      coupon);
+  }
+
   public deleteCoupon(): Observable<UserMessage> {
     return this.http.post<UserMessage>(this.baseUrl +
       "deleteCoupon?t=" + this.shareDataService.userResponse.token +
@@ -44,5 +50,11 @@ export class CompanyService {
       "getAllCoupons?t=" + this.shareDataService.userResponse.token,
       { withCredentials: true });
   }
-  
+
+  public getCompanyDetails(): Observable<UserMessageAndCompany> {
+    return this.http.get<UserMessageAndCompany>(this.baseUrl +
+      "getCompanyDetails?t=" + this.shareDataService.userResponse.token,
+      { withCredentials: true });
+  }
+
 }

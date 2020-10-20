@@ -17,12 +17,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.jb.CouponsSystem.beans.Company;
 import com.jb.CouponsSystem.beans.Customer;
-import com.jb.CouponsSystem.repo.UserMessageAndCustomer;
 import com.jb.CouponsSystem.service.AdminService;
 import com.jb.CouponsSystem.utils.TokenManager;
 import com.jb.CouponsSystem.utils.UserMessage;
 import com.jb.CouponsSystem.utils.UserMessageAndCompanies;
 import com.jb.CouponsSystem.utils.UserMessageAndCompany;
+import com.jb.CouponsSystem.utils.UserMessageAndCustomer;
 import com.jb.CouponsSystem.utils.UserMessageAndCustomers;
 import com.jb.CouponsSystem.utils.UserType;
 
@@ -53,7 +53,7 @@ public class AdminController {
 	@PutMapping("/updateCompany")
 	public ResponseEntity<UserMessage> updateCompany(@RequestParam(name = "t") String token,
 			@RequestParam(name = "existEmail") String existEmail, @RequestParam(name = "newEmail") String newEmail,
-			@RequestParam(name = "newPassword") String newPassword) throws Exception {
+			@RequestParam(name = "newPassword") String newPassword) {
 		if (!tokenManager.validateUser(UUID.fromString(token), UserType.ADMIN)) {
 			return new ResponseEntity<UserMessage>(new UserMessage("Unauthorized"), HttpStatus.UNAUTHORIZED);
 		}

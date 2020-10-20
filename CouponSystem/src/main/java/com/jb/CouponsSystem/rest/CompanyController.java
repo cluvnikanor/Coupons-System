@@ -10,15 +10,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jb.CouponsSystem.beans.Company;
 import com.jb.CouponsSystem.beans.Coupon;
 import com.jb.CouponsSystem.service.CompanyService;
 import com.jb.CouponsSystem.utils.TokenManager;
 import com.jb.CouponsSystem.utils.UserMessage;
+import com.jb.CouponsSystem.utils.UserMessageAndCompany;
 import com.jb.CouponsSystem.utils.UserMessageAndCoupons;
 import com.jb.CouponsSystem.utils.UserType;
 
@@ -44,6 +47,20 @@ public class CompanyController {
 			return new ResponseEntity<UserMessage>(new UserMessage(e.getMessage()), HttpStatus.OK);
 		}
 		return new ResponseEntity<UserMessage>(new UserMessage("Coupon added successfully"), HttpStatus.OK);
+	}
+
+	@PutMapping("/updateCoupon")
+	public ResponseEntity<UserMessage> updateCoupon(@RequestParam(name = "t") String token,
+			@RequestBody Coupon coupon) {
+		if (!tokenManager.validateUser(UUID.fromString(token), UserType.COMPANY)) {
+			return new ResponseEntity<UserMessage>(new UserMessage("Unauthorized"), HttpStatus.UNAUTHORIZED);
+		}
+		try {
+			companyService.updateCoupon(coupon);
+		} catch (ServerException e) {
+			return new ResponseEntity<UserMessage>(new UserMessage(e.getMessage()), HttpStatus.OK);
+		}
+		return new ResponseEntity<UserMessage>(new UserMessage("Update successfully"), HttpStatus.OK);
 	}
 
 	@PostMapping("/deleteCoupon")
@@ -74,7 +91,21 @@ public class CompanyController {
 			return new ResponseEntity<UserMessageAndCoupons>(new UserMessageAndCoupons(e.getMessage()), HttpStatus.OK);
 		}
 		return new ResponseEntity<UserMessageAndCoupons>(new UserMessageAndCoupons("", coupons), HttpStatus.OK);
+	}
 
+	@GetMapping("/getCompanyDetails")
+	public ResponseEntity<UserMessageAndCompany> getCompanyDetails(@RequestParam(name = "t") String token) {
+		if (!tokenManager.validateUser(UUID.fromString(token), UserType.COMPANY)) {
+			return new ResponseEntity<UserMessageAndCompany>(new UserMessageAndCompany("Unauthorized"),
+					HttpStatus.UNAUTHORIZED);
+		}
+		Company company = null;
+		try {
+			company = companyService.getCompanyByEmail(tokenManager.getUserEmail(UUID.fromString(token))).get(0);
+		} catch (ServerException e) {
+			return new ResponseEntity<UserMessageAndCompany>(new UserMessageAndCompany(e.getMessage()), HttpStatus.OK);
+		}
+		return new ResponseEntity<UserMessageAndCompany>(new UserMessageAndCompany("", company), HttpStatus.OK);
 	}
 //	@PostMapping("/add")
 //	public ResponseEntity<Long> add(@RequestBody Company company) throws Exception {

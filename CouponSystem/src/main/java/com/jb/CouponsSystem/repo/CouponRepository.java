@@ -36,8 +36,6 @@ public interface CouponRepository extends JpaRepository<Coupon, Long> {
 
 	List<Coupon> findAllByCompanyId(long companyId);
 
-//	List<Coupon> findAllByCompanyIdAndCategoryId(long companyId, long categoryId);
-
 	@Query("SELECT c FROM Coupon c WHERE c.companyId = :companyId AND c.price >= :minPrice AND c.price <= :maxPrice")
 	List<Coupon> findAllByCompanyBetweenPrices(long companyId, Double minPrice, Double maxPrice);
 
@@ -55,5 +53,9 @@ public interface CouponRepository extends JpaRepository<Coupon, Long> {
 	@Modifying
 	@Query(value = "DELETE FROM coupons WHERE company_id = :companyId", nativeQuery = true)
 	void deleteCompanyCoupons(long companyId);
+
+	@Query(value = "SELECT customers_id FROM coupons.coupons_customers "
+			+ "WHERE customer_id = :customerId", nativeQuery = true)
+	List<Long> findAllIdsByCustomerId(long customerId);
 
 }

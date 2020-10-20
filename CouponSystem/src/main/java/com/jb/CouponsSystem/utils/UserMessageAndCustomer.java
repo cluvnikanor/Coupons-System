@@ -1,4 +1,4 @@
-package com.jb.CouponsSystem.repo;
+package com.jb.CouponsSystem.utils;
 
 import com.jb.CouponsSystem.beans.Customer;
 import com.jb.CouponsSystem.utils.UserMessage;

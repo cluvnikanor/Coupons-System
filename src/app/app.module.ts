@@ -25,12 +25,7 @@ import { UpdateCustomerComponent } from './component/adminComponents/update-cust
 import { DeleteCustomerComponent } from './component/adminComponents/delete-customer/delete-customer.component';
 import { ViewCustomerComponent } from './component/adminComponents/view-customer/view-customer.component';
 import { ViewAllCustomersComponent } from './component/adminComponents/view-all-customers/view-all-customers.component';
-import { AddCouponComponent } from './component/companyComponents/add-coupon/add-coupon.component';
-import { UpdateCouponComponent } from './component/companyComponents/update-coupon/update-coupon.component';
-import { DeleteCouponComponent } from './component/companyComponents/delete-coupon/delete-coupon.component';
 import { ViewAllCouponsComponent } from './component/companyComponents/view-all-coupons/view-all-coupons.component';
-import { ViewCategoryCouponsComponent } from './component/companyComponents/view-category-coupons/view-category-coupons.component';
-import { ViewPricesCouponsComponent } from './component/companyComponents/view-prices-coupons/view-prices-coupons.component';
 import { ViewCompanyDetailsComponent } from './component/companyComponents/view-company-details/view-company-details.component';
  
 @NgModule({
@@ -56,12 +51,7 @@ import { ViewCompanyDetailsComponent } from './component/companyComponents/view-
     DeleteCustomerComponent,
     ViewCustomerComponent,
     ViewAllCustomersComponent,
-    AddCouponComponent,
-    UpdateCouponComponent,
-    DeleteCouponComponent,
     ViewAllCouponsComponent,
-    ViewCategoryCouponsComponent,
-    ViewPricesCouponsComponent,
     ViewCompanyDetailsComponent,
   ],
   imports: [

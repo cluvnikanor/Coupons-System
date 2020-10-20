@@ -1,18 +1,8 @@
 <p>company works!</p>
 
-<button type="button" class="btn btn-secondary" (click)=chooseApp(1)>Add coupon</button>
+<button type="button" class="btn btn-secondary" (click)=chooseApp(1)>Company's coupons</button>
 
-<button type="button" class="btn btn-secondary" (click)=chooseApp(2)>Update coupon</button>
-
-<button type="button" class="btn btn-secondary" (click)=chooseApp(3)>Delete coupon</button>
-
-<button type="button" class="btn btn-secondary" (click)=chooseApp(4)>View all coupons</button>
-
-<button type="button" class="btn btn-secondary" (click)=chooseApp(5)>View coupons from category</button>
-
-<button type="button" class="btn btn-secondary" (click)=chooseApp(6)>View coupons between prices</button>
-
-<button type="button" class="btn btn-secondary" (click)=chooseApp(7)>View company details</button>
+<button type="button" class="btn btn-secondary" (click)=chooseApp(2)>View company details</button>
 
 
 <ng-container *ngIf="this.companyService.showApp[0]">
@@ -20,30 +10,9 @@
 </ng-container>
 
 <ng-container *ngIf="this.companyService.showApp[1]">
-    <app-add-coupon></app-add-coupon>
-  </ng-container>
-  
-  <ng-container *ngIf="this.companyService.showApp[2]">
-    <app-update-coupon></app-update-coupon>
-  </ng-container>
+  <app-view-all-coupons></app-view-all-coupons>
+</ng-container>
 
-  <ng-container *ngIf="this.companyService.showApp[3]">
-    <app-delete-coupon></app-delete-coupon>
-  </ng-container>
-  
-  <ng-container *ngIf="this.companyService.showApp[4]">
-    <app-view-all-coupons></app-view-all-coupons>
-  </ng-container>
-  
-  <ng-container *ngIf="this.companyService.showApp[5]">
-    <app-view-category-coupons></app-view-category-coupons>
-  </ng-container>
-  
-  <ng-container *ngIf="this.companyService.showApp[6]">
-    <app-view-prices-coupons></app-view-prices-coupons>
-  </ng-container>
-  
-  <ng-container *ngIf="this.companyService.showApp[7]">
-    <app-view-company-details></app-view-company-details>
-  </ng-container>
-  
+<ng-container *ngIf="this.companyService.showApp[2]">
+  <app-view-company-details></app-view-company-details>
+</ng-container>

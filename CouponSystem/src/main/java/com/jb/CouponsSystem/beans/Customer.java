@@ -98,6 +98,10 @@ public class Customer {
 		this.coupons = coupons;
 	}
 
+	public void addCoupon(Coupon coupon) {
+		coupons.add(coupon);
+	}
+
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
