@@ -1,0 +1,24 @@
+<p>view-all-customers works!</p>
+
+<legend>Customers list</legend>
+
+<div class="table-responsive">
+    <table class="table table-hover table-dark">
+        <thead>
+            <tr>
+                <th scope="col">First name</th>
+                <th scope="col">Last name</th>
+                <th scope="col">Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let c of customers">
+                <ng-container *ngIf="c.firstName">
+                    <td>{{c.firstName}}</td>
+                    <td>{{c.lastName}}</td>
+                    <td>{{c.email}}</td>
+                </ng-container>
+            </tr>
+        </tbody>
+    </table>
+</div>

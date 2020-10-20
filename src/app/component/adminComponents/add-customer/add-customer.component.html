@@ -1,0 +1,44 @@
+<p>add-customer works!</p>
+
+<form action="" method="POST" role="form">
+    <legend>Add new customer</legend>
+
+    <div class="form-group row">
+        <label for="" class="col-sm-2 col-form-label">First name</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="row2" placeholder="First name"
+             [(ngModel)]="customer.firstName" name="second">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="" class="col-sm-2 col-form-label">Last name</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="row3" placeholder="Last name"
+             [(ngModel)]="customer.lastName" name="third">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+            <input type="email" class="form-control" id="row4" placeholder="Email" 
+            [(ngModel)]="customer.email" name="fourth">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="" class="col-sm-2 col-form-label">Password</label>
+        <div class="col-sm-10">
+            <input type="password" class="form-control" id="row5" placeholder="Password" 
+            [(ngModel)]="customer.password" name="fourth">
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" (click)=addCustomerClick()>Add customer</button>
+
+</form>
+
+<p class="reddish-bold">
+    {{this.adminService.message}}
+</p>

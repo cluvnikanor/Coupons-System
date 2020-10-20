@@ -5,3 +5,12 @@
 #singlebutton{
     color: black;
 }
+
+.reddish{
+    color: red;
+  }
+
+  .reddish-bold{
+    color: red;
+    font-weight: bold;
+  }

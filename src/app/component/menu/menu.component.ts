@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {LogServiceService} from 'src/app/services/log-service.service';
+import { ShareDataService } from 'src/app/services/share-data.service';
 
 @Component({
   selector: 'app-menu',
@@ -8,7 +8,7 @@ import {LogServiceService} from 'src/app/services/log-service.service';
 })
 export class MenuComponent implements OnInit {
 
-  constructor(public logServiceService: LogServiceService) { }
+  constructor(public shareDataService: ShareDataService) { }
 
   ngOnInit() {
   }

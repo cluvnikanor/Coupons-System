@@ -1,0 +1,20 @@
+<p>delete-customer works!</p>
+
+<form class="form-inline">
+    <legend>Delete a customer</legend>
+
+    <div class="form-group mx-sm-3 mb-2">
+        <label for="" class="col-sm-2 col-form-label">Customer's email</label>
+        <div class="col-sm-10">
+            <input type="email" class="form-control" id="row2" placeholder="Email" 
+            [(ngModel)]="adminService.email" name="second">
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" (click)=deleteCustomerClick()>Delete</button>
+
+</form>
+
+<p class="reddish-bold">
+    {{this.adminService.message}}
+</p>

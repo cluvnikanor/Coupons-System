@@ -1,0 +1,22 @@
+<p>view-all-companies works!</p>
+
+<legend>Companies list</legend>
+
+<div class="table-responsive">
+  <table class="table table-hover table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of companies">
+        <ng-container *ngIf="c.name">
+        <td>{{c.name}}</td>
+        <td>{{c.email}}</td>
+        </ng-container>
+    </tr>
+    </tbody>
+  </table>
+  </div> 

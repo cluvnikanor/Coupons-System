@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from 'src/models/Product';
-import {ProductsService} from  'src/app/services/products.service';
-import {LogServiceService} from 'src/app/services/log-service.service';
-import { Company } from 'src/models/company';
+import {ShareDataService} from 'src/app/services/share-data.service'
 
 @Component({
   selector: 'app-home',
@@ -11,18 +8,10 @@ import { Company } from 'src/models/company';
 })
 export class HomeComponent implements OnInit {
 
-  public products:Product[];
-  public companies: Company[];
 
-  public constructor(private productsService: ProductsService, private logServiceService: LogServiceService) { }
+  public constructor(public shareDataService: ShareDataService) { }
 
-  ngOnInit() {
-    // this.products = this.productsService.getAllProducts();
+  ngOnInit() {}
 
-    // this.productsService.getAllProductsAsync1((productsResults)=>{this.products=productsResults},
-    //                                                               (err)=>{console.log(err.message)});    
-
-    this.logServiceService.getAllCompanies().subscribe(c=> {this.companies=c;}, err=> {console.log(err.message)});
-  }
 
 }

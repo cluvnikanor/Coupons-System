@@ -1,19 +1,17 @@
 {{currentDate|date:'d MMMM yyyy'}}
 
-<button type="button" class="btn btn-default">
-  <ng-container *ngIf="this.logServiceService.isLoged; else elseTemplate">
-  <a [routerLink]="['/logout']"  routerLinkActive="router-link-active" >Logout</a>
-  </ng-container>
-  <ng-template #elseTemplate>
-    <a [routerLink]="['/login']"  routerLinkActive="router-link-active" >Login</a>
-  </ng-template>
-   </button>
+<ng-container *ngIf="this.shareDataService.userResponse.token">
+    <button type="button" class="btn btn-secondary" (click)=chooseApp(9)>Logout</button>
+</ng-container>
 
-<button type="button" class="btn btn-default">    
-  <a [routerLink]="['/middle']"  routerLinkActive="router-link-active" >Middle</a>
-</button>
+<ng-container *ngIf="!this.shareDataService.userResponse.token">
+    <button type="button" class="btn btn-secondary" (click)=chooseApp(0)>Login</button>
+</ng-container>
 
-<button type="button" class="btn btn-default">
-  <a [routerLink]="['/left']"  routerLinkActive="router-link-active" >Left</a>
-</button>
+<button type="button" class="btn btn-secondary" (click)=chooseApp(1)>Admin</button>
 
+
+<button type="button" class="btn btn-secondary" (click)=chooseApp(2)>Company</button>
+
+
+<button type="button" class="btn btn-secondary" (click)=chooseApp(3)>Customer</button>

@@ -1,0 +1,84 @@
+<p>add-coupon works!</p>
+
+<form action="" method="POST" role="form">
+    <legend>Add new coupon</legend>
+
+    <div class="form-group row">
+        <label for="" class="col-sm-2 col-form-label">Title</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="row2" 
+            placeholder="Title" [(ngModel)]="coupon.title"
+                name="second">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="exampleFormControlSelect1" class="col-sm-2 col-form-label">Category</label>
+        <div class="col-sm-10">
+          <select class="form-control" [(ngModel)]="coupon.categoryId" name="first">
+            <!-- <option select disabled value="CUSTOMER">Select type</option> -->
+            <option value="0">Food</option>
+            <option value="1">Electricity</option>
+            <option value="2">Restaurant</option>
+            <option value="3">Vacation</option>
+          </select>
+        </div>
+      </div>
+
+    <div class="form-group row">
+        <label for="" class="col-sm-2 col-form-label">Description</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="row4" 
+            placeholder="Description" [(ngModel)]="coupon.description"
+                name="fourth">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="example-date-input" class="col-2 col-form-label">Start date</label>
+        <div class="col-10">
+          <input class="form-control" type="date" [(ngModel)]="coupon.startDate" name="fifth" id="example-date-input">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="example-date-input" class="col-2 col-form-label">End date</label>
+        <div class="col-10">
+          <input class="form-control" type="date" [(ngModel)]="coupon.endDate" name="sixth" id="example-date-input">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="" class="col-sm-2 col-form-label">Price</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="row7" 
+            placeholder="Price" [(ngModel)]="coupon.price"
+                name="Seventh">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="" class="col-sm-2 col-form-label">Amount</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="row8" 
+            placeholder="Amount" [(ngModel)]="coupon.amount"
+                name="Eighth">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="" class="col-sm-2 col-form-label">Image</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="row9" 
+            placeholder="Image" [(ngModel)]="coupon.image"
+                name="Ninth">
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" (click)=addCouponClick()>Add coupon</button>
+
+</form>
+
+<p class="reddish-bold">
+    {{this.companyService.message}}
+</p>

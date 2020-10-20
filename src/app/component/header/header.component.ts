@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { LogServiceService } from 'src/app/services/log-service.service';
+import { Component, OnInit, Input, Injectable } from '@angular/core';
+import { ShareDataService } from 'src/app/services/share-data.service';
 
 @Component({
   selector: 'app-header',
@@ -7,15 +7,43 @@ import { LogServiceService } from 'src/app/services/log-service.service';
   styleUrls: ['./header.component.css']
 })
 
+// @Injectable({
+//   providedIn: 'root'
+// })
 export class HeaderComponent implements OnInit {
   public currentDate: Date;
 
-
-  constructor(public logServiceService: LogServiceService) { 
+  public constructor(public shareDataService: ShareDataService) {
     this.currentDate = new Date();
   }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  public chooseApp(option: number): void {
+    this.shareDataService.chooseApp(option);
   }
-  
+
+  // public login(): void {
+  //   if (this.shareDataService.showLogin) {
+  //     this.shareDataService.showLogin = false;
+  //   } else {
+  //     this.shareDataService.showLogin = true;
+  //     this.shareDataService.showAdmin = false;
+  //     this.shareDataService.showCompany = false;
+  //     this.shareDataService.showCustomer = false;
+  //   }
+  // }
+
+  // public admin(): void {
+  //   this.shareDataService.admin();
+  // }
+
+  // public company(): void {
+  //   this.shareDataService.company();
+  // }
+
+  // public customer(): void {
+  //   this.shareDataService.customer();
+  // }
+
 }

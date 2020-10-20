@@ -1,0 +1,66 @@
+<p>admin works!</p>
+
+<button type="button" class="btn btn-secondary" (click)=chooseApp(1)>Add company</button>
+
+<button type="button" class="btn btn-secondary" (click)=chooseApp(2)>Update company</button>
+
+<button type="button" class="btn btn-secondary" (click)=chooseApp(3)>Delete company</button>
+
+<button type="button" class="btn btn-secondary" (click)=chooseApp(4)>View company</button>
+
+<button type="button" class="btn btn-secondary" (click)=chooseApp(5)>View all companies</button>
+
+<button type="button" class="btn btn-secondary" (click)=chooseApp(6)>Add customer</button>
+
+<button type="button" class="btn btn-secondary" (click)=chooseApp(7)>Update customer</button>
+
+<button type="button" class="btn btn-secondary" (click)=chooseApp(8)>Delete customer</button>
+
+<button type="button" class="btn btn-secondary" (click)=chooseApp(9)>View customer</button>
+
+<button type="button" class="btn btn-secondary" (click)=chooseApp(10)>View all customers</button>
+
+
+<ng-container *ngIf="this.adminService.showApp[0]">
+  <app-login></app-login>
+</ng-container>
+
+<ng-container *ngIf="this.adminService.showApp[1]">
+    <app-add-company></app-add-company>
+  </ng-container>
+  
+  <ng-container *ngIf="this.adminService.showApp[2]">
+    <app-update-company></app-update-company>
+  </ng-container>
+  
+  <ng-container *ngIf="this.adminService.showApp[3]">
+    <app-delete-company></app-delete-company>
+  </ng-container>
+  
+  <ng-container *ngIf="this.adminService.showApp[4]">
+    <app-view-company></app-view-company>
+  </ng-container>
+  
+  <ng-container *ngIf="this.adminService.showApp[5]">
+    <app-view-all-companies></app-view-all-companies>
+  </ng-container>
+  
+  <ng-container *ngIf="this.adminService.showApp[6]">
+    <app-add-customer></app-add-customer>
+  </ng-container>
+  
+  <ng-container *ngIf="this.adminService.showApp[7]">
+    <app-update-customer></app-update-customer>
+  </ng-container>
+  
+  <ng-container *ngIf="this.adminService.showApp[8]">
+    <app-delete-customer></app-delete-customer>
+  </ng-container>
+  
+  <ng-container *ngIf="this.adminService.showApp[9]">
+    <app-view-customer></app-view-customer>
+  </ng-container>
+  
+  <ng-container *ngIf="this.adminService.showApp[10]">
+    <app-view-all-customers></app-view-all-customers>
+  </ng-container>
