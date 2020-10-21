@@ -10,18 +10,18 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jb.CouponsSystem.beans.Coupon;
+import com.jb.CouponsSystem.beans.Customer;
 import com.jb.CouponsSystem.service.CustomerService;
 import com.jb.CouponsSystem.utils.TokenManager;
 import com.jb.CouponsSystem.utils.UserMessage;
 import com.jb.CouponsSystem.utils.UserMessageAndCoupons;
+import com.jb.CouponsSystem.utils.UserMessageAndCustomer;
 import com.jb.CouponsSystem.utils.UserType;
 
 @RestController
@@ -48,21 +48,46 @@ public class CustomerController {
 		return new ResponseEntity<UserMessage>(new UserMessage("Coupon purchased successfully"), HttpStatus.OK);
 	}
 
-	@GetMapping("/getAllCoupons")
-	public ResponseEntity<UserMessageAndCoupons> getAllCoupons(@RequestParam(name = "t") String token) {
+	@GetMapping("/getCustomerCoupons")
+	public ResponseEntity<UserMessageAndCoupons> getCustomerCoupons(@RequestParam(name = "t") String token) {
 		if (!tokenManager.validateUser(UUID.fromString(token), UserType.CUSTOMER)) {
 			return new ResponseEntity<UserMessageAndCoupons>(new UserMessageAndCoupons("Unauthorized"),
 					HttpStatus.UNAUTHORIZED);
 		}
 		List<Coupon> coupons = new ArrayList<>();
 		try {
-			coupons = customerService.getAllCoupons(tokenManager.getUserEmail(UUID.fromString(token)));
+			coupons = customerService.getCustomerCoupons(tokenManager.getUserEmail(UUID.fromString(token)));
 		} catch (ServerException e) {
 			return new ResponseEntity<UserMessageAndCoupons>(new UserMessageAndCoupons(e.getMessage()), HttpStatus.OK);
 		}
 		return new ResponseEntity<UserMessageAndCoupons>(new UserMessageAndCoupons("", coupons), HttpStatus.OK);
 	}
 
+	@GetMapping("/getAllCoupons")
+	public ResponseEntity<UserMessageAndCoupons> getAllCoupons(@RequestParam(name = "t") String token) {
+		if (!tokenManager.validateUser(UUID.fromString(token), UserType.CUSTOMER)) {
+			return new ResponseEntity<UserMessageAndCoupons>(new UserMessageAndCoupons("Unauthorized"),
+					HttpStatus.UNAUTHORIZED);
+		}
+		return new ResponseEntity<UserMessageAndCoupons>(new UserMessageAndCoupons("", customerService.getAllCoupons()),
+				HttpStatus.OK);
+	}
+
+	@GetMapping("/getCustomerDetails")
+	public ResponseEntity<UserMessageAndCustomer> getCustomerDetails(@RequestParam(name = "t") String token) {
+		if (!tokenManager.validateUser(UUID.fromString(token), UserType.CUSTOMER)) {
+			return new ResponseEntity<UserMessageAndCustomer>(new UserMessageAndCustomer("Unauthorized"),
+					HttpStatus.UNAUTHORIZED);
+		}
+		Customer customer = null;
+		try {
+			customer = customerService.getCustomerByEmail(tokenManager.getUserEmail(UUID.fromString(token))).get(0);
+		} catch (ServerException e) {
+			return new ResponseEntity<UserMessageAndCustomer>(new UserMessageAndCustomer(e.getMessage()),
+					HttpStatus.OK);
+		}
+		return new ResponseEntity<UserMessageAndCustomer>(new UserMessageAndCustomer("", customer), HttpStatus.OK);
+	}
 //	@PostMapping("/add")
 //	public ResponseEntity<Long> add(@RequestBody Customer customer) {
 //		service.addCustomer(customer);

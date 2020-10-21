@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CustomerService } from 'src/app/services/customer.service';
 
 @Component({
   selector: 'app-customer',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerComponent implements OnInit {
 
-  constructor() { }
+  constructor(public customerService: CustomerService) { }
 
   ngOnInit() {
+  }
+
+  public chooseApp(option: number): void {
+    this.customerService.chooseApp(option);
   }
 
 }

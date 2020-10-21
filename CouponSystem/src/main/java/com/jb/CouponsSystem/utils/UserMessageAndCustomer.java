@@ -1,7 +1,6 @@
 package com.jb.CouponsSystem.utils;
 
 import com.jb.CouponsSystem.beans.Customer;
-import com.jb.CouponsSystem.utils.UserMessage;
 
 public class UserMessageAndCustomer extends UserMessage {
 

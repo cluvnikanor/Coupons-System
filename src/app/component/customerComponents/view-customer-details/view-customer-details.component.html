@@ -1,0 +1,27 @@
+<p>view-customer-details works!</p>
+
+<form class="form-inline">
+    <legend>Customer details</legend>
+
+<ng-container *ngIf="customer.id">
+    <table class="table table-hover">
+        <tbody>
+            <tr>
+                <th scope="row">First name</th>
+                <td>{{this.customer.firstName}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Last name</th>
+                <td>{{this.customer.lastName}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Email</th>
+                <td>{{this.customer.email}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Password</th>
+                <td>{{this.customer.password}}</td>
+            </tr>
+        </tbody>
+    </table>
+</ng-container>

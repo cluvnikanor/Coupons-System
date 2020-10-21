@@ -1,1 +1,24 @@
 <p>customer works!</p>
+
+<button type="button" class="btn btn-secondary" (click)=chooseApp(1)>My coupons</button>
+
+<button type="button" class="btn btn-secondary" (click)=chooseApp(2)>Customer details</button>
+
+<button type="button" class="btn btn-secondary" (click)=chooseApp(3)>Buy coupon</button>
+
+
+<ng-container *ngIf="this.customerService.showApp[0]">
+  <app-login></app-login>
+</ng-container>
+
+<ng-container *ngIf="this.customerService.showApp[1]">
+  <app-view-customer-coupons></app-view-customer-coupons>
+</ng-container>
+
+<ng-container *ngIf="this.customerService.showApp[2]">
+  <app-view-customer-details></app-view-customer-details>
+</ng-container>
+
+<ng-container *ngIf="this.customerService.showApp[3]">
+    <app-coupon-purchase></app-coupon-purchase>
+  </ng-container>

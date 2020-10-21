@@ -3,11 +3,11 @@ import { CompanyService } from 'src/app/services/company.service';
 import { Coupon } from 'src/models/coupon';
 
 @Component({
-  selector: 'app-view-all-coupons',
-  templateUrl: './view-all-coupons.component.html',
-  styleUrls: ['./view-all-coupons.component.css']
+  selector: 'app-view-company-coupons',
+  templateUrl: './view-company-coupons.component.html',
+  styleUrls: ['./view-company-coupons.component.css']
 })
-export class ViewAllCouponsComponent implements OnInit {
+export class ViewCompanyCouponsComponent implements OnInit {
   public editNow: boolean = false;
   public addNow: boolean = false;
   public filtering: boolean = false;
@@ -22,16 +22,16 @@ export class ViewAllCouponsComponent implements OnInit {
     this.getAllCoupons();
   }
 
-private getAllCoupons(){
-  this.companyService.getAllCoupons().subscribe(userMessageAndCoupons => {
-    this.coupons = userMessageAndCoupons.coupons;
-    this.companyService.message = userMessageAndCoupons.message;
-  }, err => {
-    // console.log(err.message)
-    alert(err.error.message)
-    // this.adminService.message = err.message
-  });
-}
+  private getAllCoupons() {
+    this.companyService.getAllCoupons().subscribe(userMessageAndCoupons => {
+      this.coupons = userMessageAndCoupons.coupons;
+      this.companyService.message = userMessageAndCoupons.message;
+    }, err => {
+      // console.log(err.message)
+      alert(err.error.message)
+      // this.adminService.message = err.message
+    });
+  }
 
   public editCoupon(c: Coupon) {
     this.coupon = c;

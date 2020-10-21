@@ -1,12 +1,12 @@
 {{currentDate|date:'d MMMM yyyy'}}
 
 <ng-container *ngIf="this.shareDataService.userResponse.token">
-    <button type="button" class="btn btn-secondary" (click)=chooseApp(9)>Logout</button>
+    <button type="button" class="btn btn-secondary">Logout</button>
 </ng-container>
 
-<ng-container *ngIf="!this.shareDataService.userResponse.token">
+<!-- <ng-container *ngIf="!this.shareDataService.userResponse.token"> -->
     <button type="button" class="btn btn-secondary" (click)=chooseApp(0)>Login</button>
-</ng-container>
+<!-- </ng-container> -->
 
 <button type="button" class="btn btn-secondary" (click)=chooseApp(1)>Admin</button>
 

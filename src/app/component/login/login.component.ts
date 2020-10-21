@@ -36,6 +36,13 @@ export class LoginComponent implements OnInit {
       // alert(this.shareDataService.userResponse.message);
     }
   }
+  
+  public logout(): void {
+    this.loginService.token = this.shareDataService.userResponse.token;
+    this.loginService.logout().subscribe(c => { this.shareDataService.userResponse = c; },
+      err => { console.log(err.message) });
+    this.shareDataService.showApp[0];
+  }
 
   public registerClick(): void {
     this.register = true;

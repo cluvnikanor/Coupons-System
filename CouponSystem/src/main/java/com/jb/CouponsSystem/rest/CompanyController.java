@@ -107,6 +107,7 @@ public class CompanyController {
 		}
 		return new ResponseEntity<UserMessageAndCompany>(new UserMessageAndCompany("", company), HttpStatus.OK);
 	}
+
 //	@PostMapping("/add")
 //	public ResponseEntity<Long> add(@RequestBody Company company) throws Exception {
 //		if (!companyService.getCompanyByEmail(company.getEmail()).isEmpty()) {

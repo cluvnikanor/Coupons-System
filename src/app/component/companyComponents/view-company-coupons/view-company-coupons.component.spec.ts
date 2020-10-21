@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ViewAllCouponsComponent } from './view-all-coupons.component';
+import { ViewCompanyCouponsComponent } from './view-company-coupons.component';
 
 describe('ViewAllCouponsComponent', () => {
-  let component: ViewAllCouponsComponent;
-  let fixture: ComponentFixture<ViewAllCouponsComponent>;
+  let component: ViewCompanyCouponsComponent;
+  let fixture: ComponentFixture<ViewCompanyCouponsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ViewAllCouponsComponent ]
+      declarations: [ ViewCompanyCouponsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ViewAllCouponsComponent);
+    fixture = TestBed.createComponent(ViewCompanyCouponsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

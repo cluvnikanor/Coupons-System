@@ -25,8 +25,11 @@ import { UpdateCustomerComponent } from './component/adminComponents/update-cust
 import { DeleteCustomerComponent } from './component/adminComponents/delete-customer/delete-customer.component';
 import { ViewCustomerComponent } from './component/adminComponents/view-customer/view-customer.component';
 import { ViewAllCustomersComponent } from './component/adminComponents/view-all-customers/view-all-customers.component';
-import { ViewAllCouponsComponent } from './component/companyComponents/view-all-coupons/view-all-coupons.component';
+import { ViewCompanyCouponsComponent } from './component/companyComponents/view-company-coupons/view-company-coupons.component';
 import { ViewCompanyDetailsComponent } from './component/companyComponents/view-company-details/view-company-details.component';
+import { ViewCustomerCouponsComponent } from './component/customerComponents/view-customer-coupons/view-customer-coupons.component';
+import { ViewCustomerDetailsComponent } from './component/customerComponents/view-customer-details/view-customer-details.component';
+import { CouponPurchaseComponent } from './component/customerComponents/coupon-purchase/coupon-purchase.component';
  
 @NgModule({
   declarations: [
@@ -51,8 +54,12 @@ import { ViewCompanyDetailsComponent } from './component/companyComponents/view-
     DeleteCustomerComponent,
     ViewCustomerComponent,
     ViewAllCustomersComponent,
-    ViewAllCouponsComponent,
+    ViewCompanyCouponsComponent,
     ViewCompanyDetailsComponent,
+    ViewCompanyCouponsComponent,
+    ViewCustomerCouponsComponent,
+    ViewCustomerDetailsComponent,
+    CouponPurchaseComponent,
   ],
   imports: [
     BrowserModule,

@@ -4,8 +4,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
-import com.jb.CouponsSystem.service.AdminService;
-
 @SpringBootApplication // (scanBasePackages= {"com.jb.CouponsSystem"})
 public class CouponsSystemApplication {
 
