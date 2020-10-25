@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CompanyService } from 'src/app/services/company.service';
+import { ShareDataService } from 'src/app/services/share-data.service';
 import { Coupon } from 'src/models/coupon';
 
 @Component({
@@ -16,10 +17,13 @@ export class ViewCompanyCouponsComponent implements OnInit {
   public categoryFilter: number = 1;
   public maxPriceFilter: number = Infinity;
 
-  constructor(public companyService: CompanyService) { }
+  constructor(public companyService: CompanyService, private shareDataService: ShareDataService) { }
 
   ngOnInit() {
+    this.shareDataService.userResponse.message = "";
     this.getAllCoupons();
+    this.companyService.message = "";
+
   }
 
   private getAllCoupons() {
@@ -55,7 +59,7 @@ export class ViewCompanyCouponsComponent implements OnInit {
     }
   }
 
-  public updateCompanyClick(): void {
+  public updateCouponClick(): void {
     this.companyService.updateCoupon(this.coupon).subscribe(userMessage => {
       this.companyService.message = userMessage.message;
     }, err => {

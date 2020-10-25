@@ -1,4 +1,4 @@
-<p>login works!</p>
+<!-- <p>login works!</p> -->
 
 <ng-container *ngIf="this.shareDataService.userResponse.token">
   <button type="button" class="btn btn-secondary" (click)=logout()>Logout</button>
@@ -36,7 +36,7 @@
           <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
           <div class="col-sm-10">
             <input type="password" placeholder="Enter password" class="form-control" [(ngModel)]="password"
-              name="first">
+              name="second">
           </div>
         </div>
 
@@ -44,7 +44,7 @@
         <div class="form-group row">
           <label for="exampleFormControlSelect1" class="col-sm-2 col-form-label">Select type</label>
           <div class="col-sm-10">
-            <select class="form-control" [(ngModel)]="type" name="first">
+            <select class="form-control" [(ngModel)]="type" name="third">
               <option select disabled value="">Select type</option>
               <option value="CUSTOMER">Customer</option>
               <option value="COMPANY">Company</option>
@@ -53,13 +53,9 @@
           </div>
         </div>
 
-        <p class="reddish-bold">
-          {{this.shareDataService.userResponse.message}}
-        </p>
-
         <!-- Button -->
         <div class="">
-          <button type="submit" id="" name="singlebutton" class="btn btn-primary" (click)="this.loginClick()"> Login
+          <button type="submit" id="1" name="singlebutton" class="btn btn-primary" (click)="this.loginClick()"> Login
           </button>
         </div>
         <p>
@@ -68,7 +64,7 @@
 
       <div class="">
         Don't have a user?
-        <button type="submit" id="" name="singlebutton" class="btn btn-link" (click)="this.register = true"> register
+        <button type="submit" id="2" name="singlebutton" class="btn btn-link" (click)="this.register = true"> register
           now!
         </button>
       </div>
@@ -81,7 +77,7 @@
 
   <ng-container *ngIf="this.register">
 
-    <button type="submit" id="" name="singlebutton" class="btn btn-link" (click)="this.register = false"> Login
+    <button type="submit" id="3" name="singlebutton" class="btn btn-link" (click)="this.register = false"> Login
     </button>
 
     <form>
@@ -115,7 +111,7 @@
         <div class="form-group row">
           <label for="inputEmail3" class="col-sm-2 col-form-label">First name</label>
           <div class="col-sm-10">
-            <input type="text" placeholder="First name" class="form-control" [(ngModel)]="firstName" name="first">
+            <input type="text" placeholder="First name" class="form-control" [(ngModel)]="firstName" name="second">
           </div>
         </div>
 
@@ -123,7 +119,7 @@
         <div class="form-group row">
           <label for="inputEmail3" class="col-sm-2 col-form-label">Last name</label>
           <div class="col-sm-10">
-            <input type="text" placeholder="Last name" class="form-control" [(ngModel)]="lastName" name="first">
+            <input type="text" placeholder="Last name" class="form-control" [(ngModel)]="lastName" name="third">
           </div>
         </div>
       </ng-container>
@@ -133,7 +129,7 @@
         <div class="form-group row">
           <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
           <div class="col-sm-10">
-            <input type="email" placeholder="Enter email" class="form-control" [(ngModel)]="email" name="first">
+            <input type="email" placeholder="Enter email" class="form-control" [(ngModel)]="email" name="fourth">
           </div>
         </div>
 
@@ -142,7 +138,7 @@
           <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
           <div class="col-sm-10">
             <input type="password" placeholder="Enter password" class="form-control" [(ngModel)]="password"
-              name="first">
+              name="fifth">
           </div>
         </div>
       </ng-container>

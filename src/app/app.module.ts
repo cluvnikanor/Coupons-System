@@ -10,20 +10,11 @@ import { AboutComponent } from './component/about/about.component';
 import { HomeComponent } from './component/home/home.component';
 import { HeaderComponent } from './component/header/header.component';
 import { LoginComponent } from './component/login/login.component';
-import { LogoutComponent } from './component/logout/logout.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CustomerComponent } from './component/customerComponents/customer/customer.component';
 import { AdminComponent } from './component/adminComponents/admin/admin.component';
 import { CompanyComponent } from './component/companyComponents/company/company.component';
-import { AddCompanyComponent } from './component/adminComponents/add-company/add-company.component';
-import { UpdateCompanyComponent } from './component/adminComponents/update-company/update-company.component';
-import { DeleteCompanyComponent } from './component/adminComponents/delete-company/delete-company.component';
-import { ViewCompanyComponent } from './component/adminComponents/view-company/view-company.component';
 import { ViewAllCompaniesComponent } from './component/adminComponents/view-all-companies/view-all-companies.component';
-import { AddCustomerComponent } from './component/adminComponents/add-customer/add-customer.component';
-import { UpdateCustomerComponent } from './component/adminComponents/update-customer/update-customer.component';
-import { DeleteCustomerComponent } from './component/adminComponents/delete-customer/delete-customer.component';
-import { ViewCustomerComponent } from './component/adminComponents/view-customer/view-customer.component';
 import { ViewAllCustomersComponent } from './component/adminComponents/view-all-customers/view-all-customers.component';
 import { ViewCompanyCouponsComponent } from './component/companyComponents/view-company-coupons/view-company-coupons.component';
 import { ViewCompanyDetailsComponent } from './component/companyComponents/view-company-details/view-company-details.component';
@@ -40,19 +31,10 @@ import { CouponPurchaseComponent } from './component/customerComponents/coupon-p
     HomeComponent,
     HeaderComponent,
     LoginComponent,
-    LogoutComponent,
     CustomerComponent,
     AdminComponent,
     CompanyComponent,
-    AddCompanyComponent,
-    UpdateCompanyComponent,
-    DeleteCompanyComponent,
-    ViewCompanyComponent,
     ViewAllCompaniesComponent,
-    AddCustomerComponent,
-    UpdateCustomerComponent,
-    DeleteCustomerComponent,
-    ViewCustomerComponent,
     ViewAllCustomersComponent,
     ViewCompanyCouponsComponent,
     ViewCompanyDetailsComponent,

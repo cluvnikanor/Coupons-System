@@ -11,7 +11,8 @@ import { ShareDataService } from './share-data.service';
   providedIn: 'root'
 })
 export class CustomerService {
-  private baseUrl = "http://localhost:8080/customer/"
+  private baseUrl = "/customer/"
+  // private baseUrl = "http://localhost:8080/customer/"
   public showApp: boolean[] = [false, false, false, false, false, false, false, false, false, false, false];
   public message: string = "";
   public couponId: number = 0;

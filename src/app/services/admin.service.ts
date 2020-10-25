@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Company } from 'src/models/company';
+import { Customer } from 'src/models/customer';
 import { UserMessage } from 'src/models/user-message';
 import { UserMessageAndCompanies } from 'src/models/user-message-and-companies';
 import { UserMessageAndCompany } from 'src/models/user-message-and-company';
@@ -13,12 +14,15 @@ import { ShareDataService } from './share-data.service';
   providedIn: 'root'
 })
 export class AdminService {
-  private baseUrl = "http://localhost:8080/admin/"
+  public showApp: boolean[] = [false, false, false, false, false, false, false, false, false, false, false];
+  private baseUrl = "/admin/"
+  // private baseUrl = "http://localhost:8080/admin/"
   public message: string = "";
   public email: string = "";
+  public id: number = 0;
   public newEmail: string = "";
   public password: string = "";
-  public showApp: boolean[] = [false, false, false, false, false, false, false, false, false, false, false];
+  public customer: Customer = new Customer;
 
   constructor(private http: HttpClient, private shareDataService: ShareDataService) { }
 
@@ -40,6 +44,15 @@ export class AdminService {
       "updateCompany?t=" + this.shareDataService.userResponse.token +
       "&existEmail=" + this.email +
       "&newEmail=" + this.newEmail +
+      "&newPassword=" + this.password,
+      { withCredentials: true });
+  }
+
+  public updateCompany2(): Observable<UserMessage> {
+    return this.http.put<UserMessage>(this.baseUrl +
+      "updateCompany2?t=" + this.shareDataService.userResponse.token +
+      "&companyId=" + this.id +
+      "&newEmail=" + this.email +
       "&newPassword=" + this.password,
       { withCredentials: true });
   }
@@ -68,6 +81,15 @@ export class AdminService {
     return this.http.post<UserMessage>(this.baseUrl +
       "addCustomer?t=" + this.shareDataService.userResponse.token,
       Customer);
+  }
+
+  public updateCustomer2(): Observable<UserMessage> {
+    return this.http.put<UserMessage>(this.baseUrl +
+      "updateCustomer2?t=" + this.shareDataService.userResponse.token +
+      "&customerId=" + this.customer.id +
+      "&newEmail=" + this.customer.email +
+      "&newPassword=" + this.customer.password,
+      { withCredentials: true });
   }
 
   public updateCustomer(): Observable<UserMessage> {

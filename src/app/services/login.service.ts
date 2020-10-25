@@ -12,7 +12,8 @@ import { Customer } from 'src/models/customer';
 export class LoginService {
   public customerIsLoged: boolean = false;
 
-  private baseUrl = "http://localhost:8080/"
+  private baseUrl = "/"
+  // private baseUrl = "http://localhost:8080/"
   email: string = "";
   password: string = "";
   type: string = "";

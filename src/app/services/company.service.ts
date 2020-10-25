@@ -11,7 +11,8 @@ import { ShareDataService } from './share-data.service';
   providedIn: 'root'
 })
 export class CompanyService {
-  private baseUrl = "http://localhost:8080/company/"
+  private baseUrl = "/company/"
+  // private baseUrl = "http://localhost:8080/company/"
   public showApp: boolean[] = [false, false, false, false, false, false, false, false, false, false, false];
   public message: string = "";
   public id: number;

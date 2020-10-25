@@ -29,3 +29,12 @@ section{
     grid-column: span 12;
     border: 1px solid blue;
   }
+
+  .reddish-bold{
+    color: red;
+    font-weight: bold;
+  }
+
+  input{
+      width: 150px;
+  }

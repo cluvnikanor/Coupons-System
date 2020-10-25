@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CompanyService } from 'src/app/services/company.service';
+import { ShareDataService } from 'src/app/services/share-data.service';
 import { Company } from 'src/models/company';
 
 @Component({
@@ -10,9 +11,11 @@ import { Company } from 'src/models/company';
 export class ViewCompanyDetailsComponent implements OnInit {
   public company: Company;
 
-  constructor(public companyService: CompanyService) { }
+  constructor(public companyService: CompanyService, private shareDataService: ShareDataService) { }
 
   ngOnInit() {
+    this.shareDataService.userResponse.message = "";
+    this.companyService.message =";"
     this.getCompanyDetails();
   }
 

@@ -1,4 +1,4 @@
-<p>view-coupons works!</p>
+<!-- <p>view-coupons works!</p> -->
 
 <div *ngIf="!editNow">
 
@@ -167,7 +167,7 @@
             </div>
         </div>
         <ng-container *ngIf="!addNow">
-            <button type="submit" class="btn btn-primary" (click)="updateCompanyClick()">
+            <button type="submit" class="btn btn-primary" (click)="updateCouponClick()">
                 Confirm changes</button>
             <button type="submit" class="btn btn-danger" (click)="deleteCouponClick()">
                 Delete coupon</button>
@@ -177,7 +177,7 @@
                 Add coupon</button>
         </ng-container>
     </form>
-</div>
+</div> 
 
 <p class="reddish-bold">
     {{this.companyService.message}}

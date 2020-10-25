@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from 'src/app/services/customer.service';
+import { ShareDataService } from 'src/app/services/share-data.service';
 import { Customer } from 'src/models/customer';
 import { UserMessageAndCustomer } from 'src/models/user-message-and-customer';
 
@@ -11,9 +12,10 @@ import { UserMessageAndCustomer } from 'src/models/user-message-and-customer';
 export class ViewCustomerDetailsComponent implements OnInit {
   public customer: Customer;
 
-  constructor(public customerService: CustomerService) { }
+  constructor(public customerService: CustomerService, private shareDataService: ShareDataService) { }
 
   ngOnInit() {
+    this.shareDataService.userResponse.message = "";
     this.getCustomerDetails();
   }
 

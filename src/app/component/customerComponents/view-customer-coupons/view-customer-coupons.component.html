@@ -1,4 +1,4 @@
-<p>view-customer-coupons works!</p>
+<!-- <p>view-customer-coupons works!</p> -->
 
     <legend>Coupons list</legend>
 
@@ -38,13 +38,11 @@
         <table class="table table-hover table-dark">
             <thead>
                 <tr>
-                    <th scope="col"></th>
                     <th scope="col">Title</th>
                     <th scope="col">CategoryName</th>
                     <th scope="col">Description</th>
                     <th scope="col">StartDate</th>
                     <th scope="col">EndDate</th>
-                    <th scope="col">Amount</th>
                     <th scope="col">Price</th>
                     <th scope="col">Image</th>
                 </tr>
@@ -64,7 +62,6 @@
                                 <td>{{c.description}}</td>
                                 <td>{{c.startDate}}</td>
                                 <td>{{c.endDate}}</td>
-                                <td>{{c.amount}}</td>
                                 <td>{{c.price}}</td>
                                 <td>{{c.image}}</td>
                             </ng-container>
@@ -74,7 +71,3 @@
             </tbody>
         </table>
     </div>
-
-<p class="reddish-bold">
-    {{this.customerService.message}}
-</p>

@@ -1,22 +1,108 @@
-<p>view-all-companies works!</p>
+<!-- <p>view-all-companies works!</p> -->
 
-<legend>Companies list</legend>
+<ng-container *ngIf="!editNow">
 
-<div class="table-responsive">
-  <table class="table table-hover table-dark">
-    <thead>
-      <tr>
-        <th scope="col">Name</th>
-        <th scope="col">Email</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let c of companies">
-        <ng-container *ngIf="c.name">
-        <td>{{c.name}}</td>
-        <td>{{c.email}}</td>
-        </ng-container>
-    </tr>
-    </tbody>
-  </table>
-  </div> 
+  <legend>Companies list</legend>
+
+  <div *ngIf="!filtering">
+    <button type="submit" id="" name="singlebutton" class="btn btn-link" (click)="this.filtering = true">
+      Find by email</button>
+    <button type="submit" id="" name="singlebutton" class="btn btn-link" (click)="this.ngOnInit()">
+      Refresh list</button>
+  </div>
+
+  <div *ngIf="filtering">
+    <button type="submit" id="" name="singlebutton" class="btn btn-link" (click)="this.filtering = false">
+      back to companies list</button>
+
+    <div class="form-group row">
+      <label for="" class="col-sm-2 col-form-label">Find company by email</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control" id="row2" placeholder="company email" [(ngModel)]="email"
+          name="second">
+      </div>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-hover table-dark">
+      <thead>
+        <tr>
+          <th></th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <!-- <th scope="col">Password</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of companies">
+          <ng-container *ngIf="!filtering || c.email == email">
+            <ng-container *ngIf="c.name">
+              <td>
+                <button type="submit" id="" name="singlebutton" class="btn btn-link"
+                  (click)="this.editCompany(c)">Edit</button>
+              </td>
+              <td>{{c.name}}</td>
+              <td>{{c.email}}</td>
+              <!-- <td>{{c.password}}</td> -->
+            </ng-container>
+          </ng-container>
+        </tr>
+        <tr>
+          <button type="button" class="btn btn-primary" (click)="this.addCompany()">Add company</button>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="editNow">
+  <form action="" method="POST" role="form">
+    <button type="submit" id="" name="singlebutton" class="btn btn-link"
+      (click)="this.editNow = false; this.addNow = false">
+      back to companies list</button>
+    <ng-container *ngIf="!addNow">
+      <legend>Edit company</legend>
+    </ng-container>
+    <ng-container *ngIf="addNow">
+      <legend>Add company</legend>
+    </ng-container>
+
+    <div *ngIf="addNow" class="form-group row">
+      <label for="" class="col-sm-2 col-form-label">Name</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="row2" placeholder="name" [(ngModel)]="company.name" name="second">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="" class="col-sm-2 col-form-label">Email</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control" id="row4" placeholder="email" [(ngModel)]="company.email" name="third">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="" class="col-sm-2 col-form-label">Password</label>
+      <div class="col-sm-10">
+        <input type="password" class="form-control" id="row4" placeholder="password" [(ngModel)]="company.password"
+          name="fourth">
+      </div>
+    </div>
+
+    <ng-container *ngIf="!addNow">
+      <button type="submit" class="btn btn-primary" (click)="updateCompanyClick()">
+        Confirm changes</button>
+      <button type="submit" class="btn btn-danger" (click)="deleteCompanyClick()">
+        Delete company</button>
+    </ng-container>
+    <ng-container *ngIf="addNow">
+      <button type="submit" class="btn btn-primary" (click)="addCompanyClick()">
+        Add company</button>
+    </ng-container>
+  </form>
+</ng-container>
+
+<p class="reddish-bold">
+  {{this.adminService.message}}
+</p>
