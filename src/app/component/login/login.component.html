@@ -1,158 +1,173 @@
 <!-- <p>login works!</p> -->
 
-<ng-container *ngIf="this.shareDataService.userResponse.token">
+<!-- <ng-container *ngIf="this.shareDataService.userResponse.token">
   <button type="button" class="btn btn-secondary" (click)=logout()>Logout</button>
-</ng-container>
-<!-- <ng-container *ngIf="!this.shareDataService.userResponse.token"> -->
-  <ng-container *ngIf="!this.register">
+</ng-container> -->
+<ng-container *ngIf="!this.register">
 
-    <div *ngIf="this.shareDataService.userResponse.token && this.type == 'ADMIN'">
-      <app-admin></app-admin>
-    </div>
+  <div *ngIf="this.shareDataService.userResponse.token && this.loginService.type == 'ADMIN'">
+    <app-admin></app-admin>
+  </div>
 
-    <div *ngIf="this.shareDataService.userResponse.token && this.type == 'COMPANY'">
-      <app-company></app-company>
-    </div>
+  <div *ngIf="this.shareDataService.userResponse.token && this.loginService.type == 'COMPANY'">
+    <app-company></app-company>
+  </div>
 
-    <div *ngIf="this.shareDataService.userResponse.token && this.type == 'CUSTOMER'">
-      <app-customer></app-customer>
-    </div>
+  <div *ngIf="this.shareDataService.userResponse.token && this.loginService.type == 'CUSTOMER'">
+    <app-customer></app-customer>
+  </div>
 
-    <div *ngIf="!this.shareDataService.userResponse.token">
-      <form>
-        <!-- Form Name -->
-        <legend>Login</legend>
-
-        <!-- Email input-->
-        <div class="form-group row">
-          <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-          <div class="col-sm-10">
-            <input type="email" placeholder="Enter email" class="form-control" [(ngModel)]="email" name="first">
-          </div>
-        </div>
-
-        <!-- Password input-->
-        <div class="form-group row">
-          <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
-          <div class="col-sm-10">
-            <input type="password" placeholder="Enter password" class="form-control" [(ngModel)]="password"
-              name="second">
-          </div>
-        </div>
-
-        <!-- Select Basic -->
-        <div class="form-group row">
-          <label for="exampleFormControlSelect1" class="col-sm-2 col-form-label">Select type</label>
-          <div class="col-sm-10">
-            <select class="form-control" [(ngModel)]="type" name="third">
-              <option select disabled value="">Select type</option>
-              <option value="CUSTOMER">Customer</option>
-              <option value="COMPANY">Company</option>
-              <option value="ADMIN">Administrator</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- Button -->
-        <div class="">
-          <button type="submit" id="1" name="singlebutton" class="btn btn-primary" (click)="this.loginClick()"> Login
-          </button>
-        </div>
-        <p>
-        </p>
-      </form>
-
-      <div class="">
-        Don't have a user?
-        <button type="submit" id="2" name="singlebutton" class="btn btn-link" (click)="this.register = true"> register
-          now!
-        </button>
-      </div>
-
-    </div>
-
-  </ng-container>
-
-
-
-  <ng-container *ngIf="this.register">
-
-    <button type="submit" id="3" name="singlebutton" class="btn btn-link" (click)="this.register = false"> Login
-    </button>
-
+  <div *ngIf="!this.shareDataService.userResponse.token">
     <form>
       <!-- Form Name -->
-      <legend>Register</legend>
+      <legend>Login</legend>
+
+      <!-- Email input-->
+      <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+          <input type="email" placeholder="Enter email" class="form-control" [(ngModel)]="this.loginService.email"
+            name="first">
+        </div>
+      </div>
+
+      <!-- Password input-->
+      <div class="form-group row">
+        <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+        <div class="col-sm-10">
+          <input type="password" placeholder="Enter password" class="form-control"
+            [(ngModel)]="this.loginService.password" name="second">
+        </div>
+      </div>
 
       <!-- Select Basic -->
       <div class="form-group row">
         <label for="exampleFormControlSelect1" class="col-sm-2 col-form-label">Select type</label>
         <div class="col-sm-10">
-          <select class="form-control" [(ngModel)]="type" name="first">
-            <!-- <option select disabled value="CUSTOMER">Select type</option> -->
+          <select class="form-control" [(ngModel)]="this.loginService.type" name="third">
+            <option select disabled value="">Select type</option>
             <option value="CUSTOMER">Customer</option>
             <option value="COMPANY">Company</option>
+            <option value="ADMIN">Administrator</option>
           </select>
         </div>
       </div>
 
-      <ng-container *ngIf="this.type == 'COMPANY'">
-        <!-- Company's name input-->
-        <div class="form-group row">
-          <label for="inputEmail3" class="col-sm-2 col-form-label">Company's name</label>
-          <div class="col-sm-10">
-            <input type="text" placeholder="Company's name" class="form-control" [(ngModel)]="name" name="first">
-          </div>
-        </div>
-      </ng-container>
-
-      <ng-container *ngIf="this.type == 'CUSTOMER'">
-        <!-- Customer's first name input-->
-        <div class="form-group row">
-          <label for="inputEmail3" class="col-sm-2 col-form-label">First name</label>
-          <div class="col-sm-10">
-            <input type="text" placeholder="First name" class="form-control" [(ngModel)]="firstName" name="second">
-          </div>
-        </div>
-
-        <!-- Customer's last name input-->
-        <div class="form-group row">
-          <label for="inputEmail3" class="col-sm-2 col-form-label">Last name</label>
-          <div class="col-sm-10">
-            <input type="text" placeholder="Last name" class="form-control" [(ngModel)]="lastName" name="third">
-          </div>
-        </div>
-      </ng-container>
-
-      <ng-container *ngIf="this.type">
-        <!-- Email input-->
-        <div class="form-group row">
-          <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-          <div class="col-sm-10">
-            <input type="email" placeholder="Enter email" class="form-control" [(ngModel)]="email" name="fourth">
-          </div>
-        </div>
-
-        <!-- Password input-->
-        <div class="form-group row">
-          <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
-          <div class="col-sm-10">
-            <input type="password" placeholder="Enter password" class="form-control" [(ngModel)]="password"
-              name="fifth">
-          </div>
-        </div>
-      </ng-container>
-
       <!-- Button -->
       <div class="">
-        <button type="submit" id="" name="singlebutton" class="btn btn-primary" (click)="this.registerClick()"> Register
+        <button type="submit" id="1" name="singlebutton" class="btn btn-primary" (click)="this.loginClick()"> Login
         </button>
       </div>
       <p>
       </p>
     </form>
-  </ng-container>
-<!-- </ng-container> -->
+
+    <div class="">
+      Don't have a user?
+      <button type="submit" id="2" name="singlebutton" class="btn btn-link" (click)="this.register = true"> register
+        now!
+      </button>
+    </div>
+
+  </div>
+
+</ng-container>
+
+
+
+<ng-container *ngIf="this.register">
+
+  <button type="submit" id="3" name="singlebutton" class="btn btn-link" (click)="this.register = false"> Login
+  </button>
+
+  <form>
+    <!-- Form Name -->
+    <legend>Register</legend>
+
+    <!-- Select Basic -->
+    <div class="form-group row">
+      <label for="exampleFormControlSelect1" class="col-sm-2 col-form-label">Select type</label>
+      <div class="col-sm-10">
+        <select class="form-control" [(ngModel)]="this.loginService.type" name="first">
+          <!-- <option select disabled value="CUSTOMER">Select type</option> -->
+          <option value="CUSTOMER">Customer</option>
+          <option value="COMPANY">Company</option>
+        </select>
+      </div>
+    </div>
+
+    <ng-container *ngIf="this.loginService.type == 'COMPANY'">
+      <!-- Company's name input-->
+      <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Company's name</label>
+        <div class="col-sm-10">
+          <input type="text" placeholder="Company's name" class="form-control"
+            [(ngModel)]="this.loginService.company.name" name="first">
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="this.loginService.type == 'CUSTOMER'">
+      <!-- Customer's first name input-->
+      <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-2 col-form-label">First name</label>
+        <div class="col-sm-10">
+          <input type="text" placeholder="First name" class="form-control"
+            [(ngModel)]="this.loginService.customer.firstName" name="second">
+        </div>
+      </div>
+
+      <!-- Customer's last name input-->
+      <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Last name</label>
+        <div class="col-sm-10">
+          <input type="text" placeholder="Last name" class="form-control"
+            [(ngModel)]="this.loginService.customer.lastName" name="third">
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="this.loginService.type">
+      <!-- Email input-->
+      <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+          <ng-container *ngIf="this.loginService.type == 'COMPANY'">
+            <input type="email" placeholder="Enter email" class="form-control"
+              [(ngModel)]="this.loginService.company.email" name="fourth">
+          </ng-container>
+          <ng-container *ngIf="this.loginService.type == 'CUSTOMER'">
+            <input type="email" placeholder="Enter email" class="form-control"
+              [(ngModel)]="this.loginService.customer.email" name="fourth">
+          </ng-container>
+        </div>
+      </div>
+
+      <!-- Password input-->
+      <div class="form-group row">
+        <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+        <div class="col-sm-10">
+          <ng-container *ngIf="this.loginService.type == 'COMPANY'">
+            <input type="password" placeholder="Enter password" class="form-control"
+              [(ngModel)]="this.loginService.company.password" name="fifth">
+          </ng-container>
+          <ng-container *ngIf="this.loginService.type == 'CUSTOMER'">
+            <input type="password" placeholder="Enter password" class="form-control"
+              [(ngModel)]="this.loginService.customer.password" name="fifth">
+          </ng-container>
+        </div>
+      </div>
+    </ng-container>
+
+    <!-- Button -->
+    <div class="">
+      <button type="submit" id="" name="singlebutton" class="btn btn-primary" (click)="this.registerClick()"> Register
+      </button>
+    </div>
+    <p>
+    </p>
+  </form>
+</ng-container>
 
 <p class="reddish-bold">
   {{this.shareDataService.userResponse.message}}

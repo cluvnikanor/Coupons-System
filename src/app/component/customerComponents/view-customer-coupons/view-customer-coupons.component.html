@@ -50,7 +50,7 @@
             <tbody>
                 <tr *ngFor="let c of coupons">
                     <ng-container *ngIf="!filtering || c.categoryId == categoryFilter">
-                        <ng-container *ngIf="!filtering || c.price <= maxPriceFilter">
+                        <ng-container *ngIf="!filtering || c.price < maxPriceFilter || c.price == maxPriceFilter">
                             <ng-container *ngIf="c.title">
                                 <td>{{c.title}}</td>
                                 <td>

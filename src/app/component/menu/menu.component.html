@@ -1,0 +1,33 @@
+<div class="btn-group-vertical">
+    <ng-container *ngIf="this.shareDataService.userResponse.token">
+        <button type="button" class="btn btn-secondary" (click)=logout()>Logout</button>
+
+        <ng-container *ngIf="this.loginService.type == 'ADMIN'">
+            <button type="button" class="btn btn-secondary" (click)=this.adminService.chooseApp(1)>View all
+                companies</button>
+
+            <button type="button" class="btn btn-secondary" (click)=this.adminService.chooseApp(2)>View all
+                customers</button>
+        </ng-container>
+
+        <ng-container *ngIf="this.loginService.type == 'COMPANY'">
+            <button type="button" class="btn btn-secondary" (click)=this.companyService.chooseApp(1)>Company's
+                coupons</button>
+
+            <button type="button" class="btn btn-secondary" (click)=this.companyService.chooseApp(2)>Company
+                details</button>
+        </ng-container>
+
+        <ng-container *ngIf="this.loginService.type == 'CUSTOMER'">
+            <button type="button" class="btn btn-secondary" (click)=this.customerService.chooseApp(1)>My
+                coupons</button>
+
+            <button type="button" class="btn btn-secondary" (click)=this.customerService.chooseApp(2)>Customer
+                details</button>
+
+            <button type="button" class="btn btn-secondary" (click)=this.customerService.chooseApp(3)>Buy
+                coupon</button>
+        </ng-container>
+
+    </ng-container>
+</div>

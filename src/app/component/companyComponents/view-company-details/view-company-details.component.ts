@@ -9,13 +9,13 @@ import { Company } from 'src/models/company';
   styleUrls: ['./view-company-details.component.css']
 })
 export class ViewCompanyDetailsComponent implements OnInit {
-  public company: Company;
+  public company: Company = new Company;
 
   constructor(public companyService: CompanyService, private shareDataService: ShareDataService) { }
 
   ngOnInit() {
     this.shareDataService.userResponse.message = "";
-    this.companyService.message =";"
+    this.companyService.message ="";
     this.getCompanyDetails();
   }
 

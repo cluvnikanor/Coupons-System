@@ -9,13 +9,13 @@ import { ShareDataService } from 'src/app/services/share-data.service';
 })
 
 export class LoginComponent implements OnInit {
-  email: string = "";
-  password: string = "";
-  type: string = "";
-  name: string = "";
-  firstName: string = "";
-  lastName: string = "";
-  register: boolean = false;
+  // public email: string = "";
+  // public password: string = "";
+  // public type: string = "";
+  // public name: string = "";
+  // public firstName: string = "";
+  // public lastName: string = "";
+  public register: boolean = false;
 
   constructor(public loginService: LoginService, public shareDataService: ShareDataService) { }
 
@@ -25,10 +25,10 @@ export class LoginComponent implements OnInit {
   }
 
   public loginClick(): void {
-    if (this.email && this.password && this.type) {
-      this.loginService.type = this.type;
-      this.loginService.email = this.email;
-      this.loginService.password = this.password;
+    if (this.loginService.email && this.loginService.password && this.loginService.type) {
+      // this.loginService.type = this.type;
+      // this.loginService.email = this.email;
+      // this.loginService.password = this.password;
       this.loginService.login().subscribe(c => { this.shareDataService.userResponse = c; },
         err => {
           // console.log(err.message) 
@@ -49,19 +49,20 @@ export class LoginComponent implements OnInit {
 
   public registerClick(): void {
     this.register = true;
-    if (this.type == "COMPANY") {
+    if (this.loginService.type == "COMPANY") {
       this.companyRegister();
     }
-    if (this.type == "CUSTOMER") {
+    if (this.loginService.type == "CUSTOMER") {
       this.customerRegister();
     }
   }
 
   public companyRegister(): void {
-    if (this.name && this.email != "" && this.password != "") {
-      this.loginService.company.name = this.name;
-      this.loginService.company.email = this.email;
-      this.loginService.company.password = this.password;
+    if (this.loginService.company.name && this.loginService.company.email != ""
+      && this.loginService.company.password != "") {
+      // this.loginService.company.name = this.name;
+      // this.loginService.company.email = this.email;
+      // this.loginService.company.password = this.password;
       this.loginService.companyRegister(this.loginService.company).subscribe(
         c => { this.shareDataService.userResponse = c; },
         err => {
@@ -73,11 +74,12 @@ export class LoginComponent implements OnInit {
   }
 
   public customerRegister(): void {
-    if (this.firstName && this.lastName && this.email != "" && this.password != "") {
-      this.loginService.customer.firstName = this.firstName;
-      this.loginService.customer.lastName = this.lastName;
-      this.loginService.customer.email = this.email;
-      this.loginService.customer.password = this.password;
+    if (this.loginService.customer.firstName && this.loginService.customer.lastName
+      && this.loginService.customer.email != "" && this.loginService.customer.password != "") {
+      // this.loginService.customer.firstName = this.firstName;
+      // this.loginService.customer.lastName = this.lastName;
+      // this.loginService.customer.email = this.email;
+      // this.loginService.customer.password = this.password;
       this.loginService.customerRegister(this.loginService.customer).subscribe(
         c => { this.shareDataService.userResponse = c; },
         err => {
